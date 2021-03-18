@@ -46,7 +46,12 @@ export default {
     resolve({
       extensions,
     }),
-    commonjs(),
+    commonjs({
+      include: /node_modules/,
+      namedExports: {
+        'node_modules/lodash/index.js': ['set'],
+      }
+    }),
     terser(),
   ],
 };
